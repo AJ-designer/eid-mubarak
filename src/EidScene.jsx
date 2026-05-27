@@ -10,7 +10,7 @@ function seeded(seed) {
   };
 }
 
-// ─── Static data (computed once) ──────────────────────────────────────────
+// Static data (computed once) 
 const STARS = Array.from({ length: 185 }, (_, i) => {
   const r = seeded(i);
   return { id: i, x: r() * 100, y: r() * 72, sz: r() * 2.3 + 0.3, op: r() * 0.52 + 0.22, dur: r() * 4 + 2, del: r() * 12 };
@@ -35,7 +35,7 @@ const BG_BALLOONS = Array.from({ length: 14 }, (_, i) => {
   };
 });
 
-// ─── Hagia Sophia SVG (rendered once as a constant) ───────────────────────
+//Hagia Sophia SVG (rendered once as a constant)
 function MosqueSVG() {
   const F = "#060312";
   return (
@@ -91,7 +91,7 @@ function MosqueSVG() {
   );
 }
 
-// ─── A single balloon (reusable) ──────────────────────────────────────────
+//A single balloon (reusable)
 function Balloon({ color, width, height, className, style, bobDelay, children }) {
   return (
     <div className={className} style={style}>
@@ -114,7 +114,7 @@ function Balloon({ color, width, height, className, style, bobDelay, children })
   );
 }
 
-// ─── Wavy balloon string ───────────────────────────────────────────────────
+// Wavy balloon string 
 function String({ width, height, cx, path }) {
   return (
     <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ display: "block", margin: "0 auto" }}>
@@ -123,7 +123,7 @@ function String({ width, height, cx, path }) {
   );
 }
 
-// ─── Main component ────────────────────────────────────────────────────────
+// Main component
 export default function EidScene() {
   const panelRef = useRef(null);
 
@@ -212,12 +212,12 @@ export default function EidScene() {
       {/* Atmospheric fog */}
       <div className="fog" />
 
-      {/* ── CLOSE-UP SNAPSHOT PANEL ────────────────────────────────────────
+      {/* CLOSE-UP SNAPSHOT PANEL 
           Covers the full scene at the start. 
           Phase 1: 3 large balloons fill the frame (snapshot moment).
           Phase 2: Balloons drift away upward.
           Phase 3: Panel scales down → "camera zoom-out" reveals the scene.
-      ─────────────────────────────────────────────────────────────────── */}
+       */}
       <div className="snapshot-panel" ref={panelRef}>
         <div className="vignette" />
 
