@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap');
 
-/* ─── Scene ─── */
+/* Scene */
 .scene {
   width: 100%;
   height: 100dvh;
@@ -10,7 +10,7 @@
   background: radial-gradient(ellipse 110% 90% at 50% 2%, #1c0845 0%, #0b0828 45%, #030110 100%);
 }
 
-/* ─── Stars ─── */
+/* Stars */
 .star {
   position: absolute;
   border-radius: 50%;
@@ -22,7 +22,7 @@
   50%       { opacity: calc(var(--op, 0.6) * 0.05); transform: scale(0.28); }
 }
 
-/* ─── Crescent Moon ─── */
+/* Crescent Moon */
 .moon-wrap {
   position: absolute;
   top: 7%;
@@ -31,7 +31,11 @@
   filter:
     drop-shadow(0 0 20px rgba(255, 213, 80, 0.5))
     drop-shadow(0 0 48px rgba(255, 180, 40, 0.25));
-  animation: moonPulse 4.5s 9.8s ease-in-out infinite;
+  animation: moonReveal 1.5s 1.5s cubic-bezier(0.2, 0.85, 0.3, 1) both, moonPulse 4.5s 3s ease-in-out infinite;
+}
+@keyframes moonReveal {
+  from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 @keyframes moonPulse {
   0%, 100% {
@@ -46,25 +50,29 @@
   }
 }
 
-/* ─── Mosque silhouette ─── */
+/* Mosque silhouette */
 .mosque {
   position: absolute;
   bottom: 0;
   width: 100%;
   display: block;
+  filter:
+    drop-shadow(0 0 20px rgba(255, 213, 80, 0.5))
+    drop-shadow(0 0 48px rgba(255, 180, 40, 0.25));
+  animation: textReveal 2.2s 3.2s cubic-bezier(0.2, 0.85, 0.3, 1) both;
 }
 
-/* ─── Background balloons ─── */
+/* Background balloons */
 .bg-balloon {
   position: absolute;
   bottom: -10px;
-  animation: floatUp var(--du, 10s) var(--de, 0s) ease-in-out infinite;
+  animation: floatUp var(--du, 10s) calc(3.5s + var(--de, 0s)) ease-in-out both;
 }
 @keyframes floatUp {
-  0%   { transform: translateY(108vh) translateX(0); opacity: 0; }
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
   6%   { opacity: 0.78; }
   88%  { opacity: 0.62; }
-  100% { transform: translateY(-16vh) translateX(var(--sw, 20px)); opacity: 0; }
+  100% { transform: translateY(-110vh) translateX(var(--sw, 20px)); opacity: 0; }
 }
 .bg-bob {
   animation: bob var(--bob, 2s) ease-in-out infinite;
@@ -74,36 +82,16 @@
   50%       { transform: rotate(3.5deg); }
 }
 
-/* ─────────────────────────────────────────────────────────
-   CLOSE-UP SNAPSHOT PANEL
-   Phase 1 (0–2.5s):   Hold — 3 balloons fill the frame
-   Phase 2 (2.5–6s):   Balloons drift upward and away
-   Phase 3 (4–9s):     Panel shrinks (camera zoom-out),
-                        reveals mosque + crescent moon
-   ───────────────────────────────────────────────────────── */
-.snapshot-panel {
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  background: radial-gradient(ellipse 110% 90% at 50% 2%, #1c0845 0%, #0b0828 45%, #030110 100%);
-  transform-origin: 50% 62%;
-  animation: panelOut 9.5s cubic-bezier(0.4, 0.1, 0.38, 1) forwards;
-}
-@keyframes panelOut {
-  0%, 26%  { transform: scale(1);     opacity: 1; }
-  84%      { transform: scale(0.055); opacity: 0; }
-  100%     { transform: scale(0.05);  opacity: 0; }
-}
-
-/* ─── Hero balloons (inside panel) ─── */
+/* Hero balloons */
 .hero-balloon {
   position: absolute;
-  animation: heroUp 9.5s cubic-bezier(0.28, 0.1, 0.3, 1) forwards;
+  z-index: 10;
+  animation: heroUp 5s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
 }
 @keyframes heroUp {
-  0%, 26% { transform: translateY(0) translateX(0);                          opacity: 1; }
-  63%     { transform: translateY(-112%) translateX(var(--dx, 0));            opacity: 0.06; }
-  100%    { transform: translateY(-130%) translateX(var(--dx, 0));            opacity: 0; }
+  0%   { transform: translateY(0) translateX(0); opacity: 1; }
+  70%  { opacity: 0.4; }
+  100% { transform: translateY(-110vh) translateX(var(--dx, 0)); opacity: 0; }
 }
 .hero-bob {
   animation: bob var(--hbob, 2.2s) ease-in-out infinite;
@@ -125,15 +113,7 @@
   margin: 0 auto;
 }
 
-/* ─── Vignette on snapshot panel ─── */
-.vignette {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse 60% 56% at 46% 36%, transparent 0%, rgba(3, 1, 10, 0.72) 100%);
-}
-
-/* ─── Eid Mubarak text ─── */
+/* Eid Mubarak text */
 .eid-text {
   position: absolute;
   top: 25%;
@@ -141,7 +121,7 @@
   text-align: center;
   z-index: 5;
   pointer-events: none;
-  animation: textReveal 2.2s 8.2s cubic-bezier(0.2, 0.85, 0.3, 1) both;
+  animation: textReveal 2.2s 3.2s cubic-bezier(0.2, 0.85, 0.3, 1) both;
 }
 @keyframes textReveal {
   from { opacity: 0; transform: translateY(20px); }
@@ -167,7 +147,7 @@
   text-shadow: 0 0 18px rgba(255, 224, 130, 0.38);
 }
 
-/* ─── Atmospheric fog ─── */
+/* Atmospheric fog */
 .fog {
   position: absolute;
   bottom: 0; left: 0; right: 0;
