@@ -1,44 +1,80 @@
-# 🌙 Eid Mubarak
+# Eid Mubarak
 
-A beautiful animated Eid greeting built with React + Vite.
+i wanted to create a cute celebration for Eid with a small animated greeting project built with React and Vite. It presents a serene night scene with rising balloons, a glowing moon, a silhouette of Hagia Sophia, twinkling stars, and subtle motion effects for a polished celebration experience.
 
-The scene features colorful balloons rising into a deep night sky, a glowing moon ascending over the Hagia Sophia silhouette, twinkling stars, and shooting stars — with a slow camera-zoom effect that pulls you gently toward the moon.
+## Overview
 
-## Preview
+This project demonstrates how to create a visually engaging greeting using modern front-end tooling without relying on external animation libraries. The animation is implemented using React components, CSS keyframes, and SVG graphics.
 
-![Night sky with balloons, moon, and Hagia Sophia silhouette](.github/preview.png)
+Key elements of the scene:
 
-## Getting started
+- A dark night sky with animated stars and shooting stars
+- Colorful balloons floating upward
+- A moon that rises toward the center of the screen
+- A silhouette of Hagia Sophia as a cultural landmark
+- A slow zoom effect that adds depth to the composition
+
+## Live Preview
+
+The app is designed to run locally using Vite and can also be deployed to GitHub Pages or any static hosting provider.
+
+## Installation
+
+1. Clone the repository or download the project files.
+2. Install dependencies:
 
 ```bash
 npm install
+```
+
+3. Start the development server:
+
+```bash
 npm run dev
 ```
 
-Then open [http://localhost:5173](http://localhost:5173).
-
-## Deploy to GitHub Pages
-
-1. Create a GitHub repo named `eid-mubarak`
-2. Make sure `vite.config.js` has `base: "/eid-mubarak/"` (already set)
-3. Run:
+4. Open the local development address displayed in the terminal, typically:
 
 ```bash
-git init
-git add .
-git commit -m "🌙 Eid Mubarak"
-git remote add origin https://github.com/<YOUR_USERNAME>/eid-mubarak.git
-git push -u origin main
-npm run deploy
+http://localhost:5173
 ```
 
-Your greeting will be live at `https://<YOUR_USERNAME>.github.io/eid-mubarak/`
+## Project Structure
 
-## Built with
+- `src/main.jsx` - Application entry point and mount logic
+- `src/App.jsx` - Main layout and component wrapper
+- `src/EidScene.jsx` - Animated Eid scene and visual composition
+- `src/EidScene.css` - Styling and animation definitions
+- `src/index.css` - Global styles
+- `vite.config.js` - Vite configuration
 
-- [React 18](https://react.dev)
-- [Vite](https://vitejs.dev)
-- CSS keyframe animations (no animation library needed)
-- SVG for the Hagia Sophia silhouette
+## Deployment
 
-عيد مبارك 🎈
+This project is configured for deployment to GitHub Pages or any static hosting service.
+
+To deploy to GitHub Pages:
+
+1. Create a GitHub repository named `eid-mubarak`.
+2. Ensure `vite.config.js` includes the correct `base` path, typically `/eid-mubarak/`.
+3. Commit and push the project to GitHub.
+4. Run the deploy script configured in `package.json`.
+
+After deployment, the project will be available at:
+
+## Built With
+
+- React 18
+- Vite
+- CSS keyframe animations
+- SVG graphics
+
+## Customization
+
+You can customize the greeting by updating the scene components and CSS styles. Common modifications include:
+
+- Changing the balloon colors and animation timings
+- Adjusting the moon position and motion
+- Adding or replacing the background silhouette
+- Tweaking the star density and animation speed
+
+
